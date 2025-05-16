@@ -15,7 +15,7 @@
         :root {
             --primary-color: #004466;
             --secondary-color: #00a1df;
-            --accent-color: #ff6b35;
+            --accent-color: #ffd735;
             --light-bg: #f8f9fa;
             --dark-text: #333;
             --light-text: #fff;
@@ -37,11 +37,15 @@
         }
         
         .navbar {
-            background-color: var(--nav-bar-color);
+            background-color: var(--light-bg);
              border-bottom: 3px solid #D4AF37; /* Gold Bottom Border */
             transition: all 0.3s ease;
             padding: 15px 0;
-            color: #FFFFFF;
+            color: #333;
+        }
+
+        .navbar-toggler{
+            color: var(--primary-color));
         }
         
         .navbar.scrolled {
@@ -50,7 +54,7 @@
         }
         
         .navbar-brand, .nav-link {
-            color: var(--light-text) !important;
+            color: #013220 !important;
             font-weight: 600;
         }
         
@@ -100,8 +104,8 @@
         }
         
         .btn-primary:hover {
-            background-color: #e05a2b;
-            border-color: #e05a2b;
+            background-color: #492be0;
+            border-color: hsl(241, 74%, 52%);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
@@ -198,8 +202,8 @@
         }
         
         footer {
-            background-color: var(--nav-bar-color);
-            color: var(--light-text);
+            background-color: var(--light-bg);
+            color: #013220;
             padding: 40px 0 20px;
         }
         
