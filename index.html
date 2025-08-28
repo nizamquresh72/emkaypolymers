@@ -765,35 +765,48 @@ footer p, footer h4, footer h5, footer form input, footer form button {
     </div>
 </section> --> 
 
+<!-- Contact Section -->
 <section id="contact" class="py-5">
-    <div class="container">
-        <h2 class="text-center section-title slide-up">Let's Connect</h2>
-        <p class="text-center mb-5 lead fade-in">Ready to discuss your polymer innovation needs?</p>
-        
-        <div class="row">
-            <!-- Contact Form -->
-            <div class="col-lg-6 mb-4 mb-lg-0 fade-in">
-                <div class="contact-form">
-                    <form action="https://formsubmit.co/enquiries@emkaypolymers.com" method="POST">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://emkaypolymers.com/thank-you.html">
-                        
-                        <div class="mb-3">
-                            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" name="subject" placeholder="Subject">
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" name="message" placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
-                    </form>
-                </div>
+  <div class="container">
+    <h2 class="text-center section-title slide-up">Let's Connect</h2>
+    <p class="text-center mb-5 lead fade-in">Ready to discuss your polymer innovation needs?</p>
+
+    <div class="row">
+      <!-- Contact Form -->
+      <div class="col-lg-6 mb-4 mb-lg-0 fade-in">
+        <div class="contact-form">
+          <form id="contactForm">
+            <input type="hidden" name="_captcha" value="false">
+
+            <div class="mb-3">
+              <input type="text" class="form-control" name="name" placeholder="Your Name" required>
             </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" name="subject" placeholder="Subject">
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Thank You Popup -->
+        <div id="thankYouPopup" style="display:none; margin-top:20px;" class="alert alert-success text-center">
+          Thank you! Your message has been sent.
+        </div>
+      </div>
+
+      <!-- Contact Info Column (unchanged) -->
+      <div class="col-lg-6 fade-in">
+        <!-- your contact info here... -->
+      </div>
+    </div>
+  </div>
+</section>
 
             <!-- Contact Info -->
             <div class="col-lg-6 fade-in">
@@ -1011,6 +1024,32 @@ footer p, footer h4, footer h5, footer form input, footer form button {
             });
         });
     });
+</script>
+
+<!-- JS to handle popup and submit via FormSubmit -->
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    fetch("https://formsubmit.co/ajax/enquiries@emkaypolymers.com", {
+      method: "POST",
+      body: formData,
+    })
+    .then(response => {
+      if (response.ok) {
+        document.getElementById("thankYouPopup").style.display = "block";
+        form.reset();
+        setTimeout(() => {
+          document.getElementById("thankYouPopup").style.display = "none";
+        }, 3000);
+      } else {
+        alert("Oops! Something went wrong.");
+      }
+    });
+  });
 </script>
 
 </body>
