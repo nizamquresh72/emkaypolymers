@@ -228,7 +228,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Footer */
-footer {
+/* footer {
     background-color: var(--light-bg);
     color: #013220;
     padding: 40px 0 20px;
@@ -243,6 +243,23 @@ footer {
 
 .footer-links a:hover {
     color: var(--secondary-color);
+} */
+
+footer {
+    background-color: var(--light-bg);
+    color: var(--dark-text); /* <-- Ensure this sets footer text to dark */
+}
+
+footer .footer-links a {
+    color: var(--dark-text); /* <-- Change white to dark text */
+}
+
+footer .footer-links a:hover {
+    color: var(--secondary-color); /* Optional: Hover color */
+}
+
+footer p, footer h4, footer h5, footer form input, footer form button {
+    color: var(--dark-text);
 }
 
 .social-icons a {
